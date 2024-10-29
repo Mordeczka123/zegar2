@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odliczanie</title>
+    <style>
+        body {
+            background-color: pink;
+            background-image: url('kukurydza-background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        #header, #footer {
+            font-size: 3em;
+            color: blue;
+            text-align: center;
+        }
+
+        #counter {
+            font-size: 2em;
+            margin: 20px 0;
+            text-align: center;
+            background-color: black; /* Ustawienie czarnego tła */
+            padding: 20px; /* Opcjonalne: dodaj padding */
+            border-radius: 10px; /* Opcjonalne: zaokrąglone rogi */
+        }
+
+        #message {
+            font-size: 2.5em; /* Rozmiar czcionki dla napisu "I did it" */
+            color: green; /* Kolor liter */
+            text-align: center; /* Wyśrodkowanie napisu */
+            margin-bottom: 20px; /* Odstęp pod napisem */
+        }
+    </style>
+</head>
+<body>
+    <div id="message">I did it</div>
+    <div id="header">Licznik wieczności :p</div>
+    <div id="counter">0 dni, 0 godzin, 0 minut, 0 sekund</div>
+    <div id="footer">romantik sajko</div>
+
+    <script>
+        function updateCounter() {
+            const startDate = new Date("2024-10-14T07:33:00");
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("counter").innerText = 
+                `${days} dni, ${hours} godzin, ${minutes} minut, ${seconds} sekund`;
+        }
+
+        setInterval(updateCounter, 1000); // Ustawienie aktualizacji co 1000 ms (1 sekunda)
+        updateCounter(); // Inicjalne wywołanie funkcji, aby od razu wyświetlić wynik
+    </script>
+</body>
+</html>
